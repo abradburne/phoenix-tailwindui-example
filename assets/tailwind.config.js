@@ -3,13 +3,16 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: [
-    "../**/*.html.eex",
-    "../**/*.html.leex",
-    "../**/views/**/*.ex",
-    "../**/live/**/*.ex",
-    "./js/**/*.js"
-  ],
+  purge: {
+    enabled: process.env.MIX_ENV === "prod",
+    content: [
+      "../**/*.html.eex",
+      "../**/*.html.leex",
+      "../**/views/**/*.ex",
+      "../**/live/**/*.ex",
+      "./js/**/*.js"
+    ]
+  },
   theme: {
     extend: {},
   },
